@@ -1,6 +1,9 @@
 #chromedriver
 chromedriver.exe
 
+#practice file
+practice.ipynb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
