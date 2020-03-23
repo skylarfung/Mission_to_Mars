@@ -48,12 +48,12 @@ def mars_news(browser):
         news_title = slide_elem.find("div", class_='content_title').get_text()
 
         # Use the parent element to find the paragraph text
-        news_p = slide_elem.find('div', class_="article_teaser_body").get_text()
+        news_paragraph = slide_elem.find('div', class_="article_teaser_body").get_text()
     
     except AttributeError:
         return None, None
 
-    return news_title, news_p
+    return news_title, news_paragraph
 
 
 # Featured Images
@@ -98,7 +98,7 @@ def mars_facts():
         return None
 
     #assign columns and set index of df
-    df.columns=['description', 'value']
+    df.columns=['description', 'Mars']
     df.set_index('description', inplace=True)
 
     #convert df into HTML format, add bootstrap
