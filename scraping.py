@@ -108,13 +108,82 @@ if __name__ == "__main__":
     # If running as script, print scraped data
     print(scrape_all())
 
-def cerberus(broswer):
+def cerberus(browser):
 
     #visit url
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(url)
 
     #click first picture
-    browser.is_element_present_by_text('cerberus', wait_time=1)
-    img_pg1 = browser.links.find_by_partial_href("cerberus")
+    browser.is_element_present_by_text('Cerberus Hemisphere Enhanced', wait_time=1)
+    img_pg1 = browser.links.find_by_partial_text("Cerberus Hemisphere Enhanced")
     img_pg1.click()
+
+    # Parse the resulting html with soup
+    html = browser.html
+    img_soup = BeautifulSoup(html, 'html.parser')
+
+    #get image url
+    cerb_img_url = img_soup.select_one("div.wide-image-wrapper ul li a").get("href")
+    
+    return cerb_img_url
+
+def schiaparelli(browser):
+
+    #visit url
+    url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    browser.visit(url)
+
+    #click second picture
+    browser.is_element_present_by_text('Schiaparelli Hemisphere Enhanced', wait_time=1)
+    img_pg2 = browser.links.find_by_partial_text("Schiaparelli Hemisphere Enhanced")
+    img_pg2.click()
+
+    # Parse the resulting html with soup
+    html = browser.html
+    img_soup = BeautifulSoup(html, 'html.parser')
+
+    #get image url
+    schi_img_url = img_soup.select_one("div.wide-image-wrapper ul li a").get("href")
+    
+    return schi_img_url
+
+def syrtis(browser):
+
+    #visit url
+    url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    browser.visit(url)
+
+    #click third picture
+    browser.is_element_present_by_text('Syrtis Major Hemisphere Enhanced', wait_time=1)
+    img_pg3 = browser.links.find_by_partial_text("Syrtis Major Hemisphere Enhanced")
+    img_pg3.click()
+
+    # Parse the resulting html with soup
+    html = browser.html
+    img_soup = BeautifulSoup(html, 'html.parser')
+
+    #get image url
+    syrt_img_url = img_soup.select_one("div.wide-image-wrapper ul li a").get("href")
+    
+    return syrt_img_url
+
+def valles(browser):
+
+    #visit url
+    url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    browser.visit(url)
+
+    #click forth picture
+    browser.is_element_present_by_text('Valles Marineris Hemisphere Enhanced', wait_time=1)
+    img_pg4 = browser.links.find_by_partial_text("Valles Marineris Hemisphere Enhanced")
+    img_pg4.click()
+
+    # Parse the resulting html with soup
+    html = browser.html
+    img_soup = BeautifulSoup(html, 'html.parser')
+
+    #get image url
+    vall_img_url = img_soup.select_one("div.wide-image-wrapper ul li a").get("href")
+    
+    return vall_img_url
