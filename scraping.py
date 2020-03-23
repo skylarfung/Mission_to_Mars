@@ -21,7 +21,7 @@ def scrape_all():
         "last_modified": dt.datetime.now(),
         "cerberus": cerberus(browser),
         "schiaparelli": schiaparelli(browser),
-        "sytris": syrtis(browser),
+        "syrtis": syrtis(browser),
         "valles": valles(browser)
     }
 
