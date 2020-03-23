@@ -27,7 +27,7 @@ def mars_news(browser):
 
     # Set the executable path and initialize the chrome browser in splinter
     executable_path = {'executable_path': 'chromedriver.exe'}
-    browser = Browser('chrome', **executable_path)
+    browser = Browser('chrome', **executable_path, headless=True)
 
     # Visit the mars nasa news site
     url = 'https://mars.nasa.gov/news/'
@@ -98,8 +98,8 @@ def mars_facts():
         return None
 
     #assign columns and set index of df
-    df.columns=['description', 'Mars']
-    df.set_index('description', inplace=True)
+    df.columns=['Description', 'Mars']
+    df.set_index('Description', inplace=True)
 
     #convert df into HTML format, add bootstrap
     return df.to_html()
@@ -107,3 +107,14 @@ def mars_facts():
 if __name__ == "__main__":
     # If running as script, print scraped data
     print(scrape_all())
+
+def cerberus(broswer):
+
+    #visit url
+    url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    browser.visit(url)
+
+    #click first picture
+    browser.is_element_present_by_text('cerberus', wait_time=1)
+    img_pg1 = browser.links.find_by_partial_href("cerberus")
+    img_pg1.click()
